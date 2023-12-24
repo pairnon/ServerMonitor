@@ -27,8 +27,6 @@ public class Main extends JavaPlugin implements Listener {
 
         Player player = event.getPlayer();
         player.sendMessage(Component.text("Hello, " + event.getPlayer().getName() + "!"));
-        player.sendMessage(Component.text(Memory.getMemUsed() + " MB used"));
-        player.sendMessage(Component.text(Memory.getMemTotal() + " MB alloc"));
 
         BossBar memBossBar = Bukkit.createBossBar("", BarColor.GREEN, BarStyle.SOLID);
         memBossBar.addPlayer(player);
