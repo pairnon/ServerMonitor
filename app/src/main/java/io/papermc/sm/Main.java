@@ -15,7 +15,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 public class Main extends JavaPlugin implements Listener {
 
     // For status updates, in seconds
-    final int interval = 2;
+    final int interval = 3;
 
     @Override
     public void onEnable() {
