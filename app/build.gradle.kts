@@ -31,6 +31,9 @@ dependencies {
 
     // Paper dependency
     compileOnly("io.papermc.paper:paper-api:1.20.2-R0.1-SNAPSHOT")
+
+    // Necessary for formatting large amounts of bytes
+    implementation("commons-io:commons-io:2.13.0")
 }
 
 // Required by Paper

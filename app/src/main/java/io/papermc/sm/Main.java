@@ -37,10 +37,10 @@ public class Main extends JavaPlugin implements Listener {
             @Override
             public void run() {
 
-                double memUsed = Memory.getMemUsed();
-                double memTotal = Memory.getMemTotal();
-                double percentMemUsed = memUsed / memTotal;
-                memBossBar.setTitle("" + memUsed + " MB of " + memTotal + " MB used");
+                String memUsed = Memory.getMemUsed();
+                String memTotal = Memory.getMemTotal();
+                double percentMemUsed = Memory.getPercentMemUsed();
+                memBossBar.setTitle(memUsed + " of " + memTotal + " used");
                 memBossBar.setProgress(percentMemUsed);
                 if(percentMemUsed >= 0.8) {
                     memBossBar.setColor(BarColor.RED);
