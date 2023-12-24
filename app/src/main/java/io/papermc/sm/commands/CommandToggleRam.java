@@ -2,6 +2,7 @@ package io.papermc.sm.commands;
 
 import java.util.List;
 
+import org.bukkit.ChatColor;
 import org.bukkit.boss.BossBar;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -25,11 +26,15 @@ public class CommandToggleRam implements CommandExecutor {
             for(Player p : players) {
                 if (p.equals(player)) {
                     memBar.removePlayer(player);
+                    String message = ChatColor.GREEN + "Turned OFF memory usage bar";
+                    player.sendMessage(message);
                     return true;
                 }
             }
 
             memBar.addPlayer(player);
+            String message = ChatColor.GREEN + "Turned ON memory usage bar";
+            player.sendMessage(message);
         }
 
         return true;
