@@ -9,11 +9,17 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     application
+
+    // Run-Task automatically downloads a Paper server and runs it
+    id("xyz.jpenilla.run-paper") version "2.2.0"
 }
 
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
+
+    // PaperMC repo
+    maven("https://repo.papermc.io/repository/maven-public/")
 }
 
 dependencies {
@@ -22,14 +28,31 @@ dependencies {
 
     // This dependency is used by the application.
     implementation("com.google.guava:guava:31.1-jre")
+
+    // Paper dependency
+    compileOnly("io.papermc.paper:paper-api:1.20.2-R0.1-SNAPSHOT")
+}
+
+// Required by Paper
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
 }
 
 application {
     // Define the main class for the application.
-    mainClass.set("servermonitor.App")
+    mainClass.set("io.papermc.sm.Main")
 }
 
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+tasks {
+    runServer {
+        // Configure the Minecraft version for our task.
+        // This is the only required configuration besides applying the plugin.
+        // Your plugin's jar (or shadowJar if present) will be used automatically.
+        minecraftVersion("1.20.1")
+    }
 }
