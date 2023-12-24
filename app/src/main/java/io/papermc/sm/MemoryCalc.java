@@ -2,7 +2,8 @@ package io.papermc.sm;
 
 import org.apache.commons.io.FileUtils;
 
-public class Memory {
+// Class containing methods for memory calculations and formatting
+public class MemoryCalc {
     
     public static String getMemUsed() {
 
