@@ -6,3 +6,6 @@ build
 
 # Ignore local vscode config directory
 .vscode
+
+# Ignore runServer output directory
+app/run
