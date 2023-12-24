@@ -40,7 +40,8 @@ public class Main extends JavaPlugin implements Listener {
                 String memUsed = Memory.getMemUsed();
                 String memTotal = Memory.getMemTotal();
                 double percentMemUsed = Memory.getPercentMemUsed();
-                memBossBar.setTitle(memUsed + " of " + memTotal + " used");
+                int percentMemUsedFormatted = (int)(percentMemUsed * 100);
+                memBossBar.setTitle("Server Memory: " + memUsed + " of " + memTotal + " used (" + percentMemUsedFormatted + "%)");
                 memBossBar.setProgress(percentMemUsed);
                 if(percentMemUsed >= 0.8) {
                     memBossBar.setColor(BarColor.RED);
