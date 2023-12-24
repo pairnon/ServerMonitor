@@ -14,6 +14,9 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class Main extends JavaPlugin implements Listener {
 
+    // For status updates, in seconds
+    final int interval = 2;
+
     @Override
     public void onEnable() {
         Bukkit.getPluginManager().registerEvents(this, this);
@@ -33,16 +36,23 @@ public class Main extends JavaPlugin implements Listener {
         new BukkitRunnable() {
             @Override
             public void run() {
+
+                double memUsed = Memory.getMemUsed();
+                double memTotal = Memory.getMemTotal();
                 
-                memBossBar.setTitle("" + Memory.getMemUsed() + " MB used");
+                memBossBar.setTitle("" + memUsed + " MB of " + memTotal + " MB used");
+                memBossBar.setProgress(memUsed / memTotal);
 
                 if (!checkPlayerExists(player)) {
                     this.cancel();
                 }
             }
-        }.runTaskTimer(this, 0L, 40L);
+        }.runTaskTimer(this, 0L, getTicksFromSeconds(interval));
 
+    }
 
+    public long getTicksFromSeconds(int seconds) {
+        return (long)seconds * 20;
     }
 
     public boolean checkPlayerExists(Player player) {
