@@ -5,3 +5,7 @@ description: Get and display server stats
 author: pairnon
 website: https://github.com/pairnon/ServerMonitor
 api-version: '1.20'
+commands:
+  toggleram:
+    description: Toggle server memory usage bar
+    usage: /toggleram
