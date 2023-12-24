@@ -30,7 +30,7 @@ public class Main extends JavaPlugin implements Listener {
         player.sendMessage(Component.text(Memory.getMemUsed() + " MB used"));
         player.sendMessage(Component.text(Memory.getMemTotal() + " MB alloc"));
 
-        BossBar memBossBar = Bukkit.createBossBar("", BarColor.RED, BarStyle.SOLID);
+        BossBar memBossBar = Bukkit.createBossBar("", BarColor.GREEN, BarStyle.SOLID);
         memBossBar.addPlayer(player);
         
         new BukkitRunnable() {
@@ -39,9 +39,18 @@ public class Main extends JavaPlugin implements Listener {
 
                 double memUsed = Memory.getMemUsed();
                 double memTotal = Memory.getMemTotal();
-                
+                double percentMemUsed = memUsed / memTotal;
                 memBossBar.setTitle("" + memUsed + " MB of " + memTotal + " MB used");
-                memBossBar.setProgress(memUsed / memTotal);
+                memBossBar.setProgress(percentMemUsed);
+                if(percentMemUsed >= 0.8) {
+                    memBossBar.setColor(BarColor.RED);
+                }
+                else if(percentMemUsed >= 0.5) {
+                    memBossBar.setColor(BarColor.YELLOW);
+                }
+                else {
+                    memBossBar.setColor(BarColor.GREEN);
+                }
 
                 if (!checkPlayerExists(player)) {
                     this.cancel();
