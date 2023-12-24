@@ -27,10 +27,12 @@ public class Main extends JavaPlugin implements Listener {
 
         Player player = event.getPlayer();
         player.sendMessage(Component.text("Hello, " + event.getPlayer().getName() + "!"));
+        runRamBar(player);
+    }
 
+    public void runRamBar(Player player) {
         BossBar memBossBar = Bukkit.createBossBar("", BarColor.GREEN, BarStyle.SOLID);
         memBossBar.addPlayer(player);
-        
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -55,7 +57,6 @@ public class Main extends JavaPlugin implements Listener {
                 }
             }
         }.runTaskTimer(this, 0L, getTicksFromSeconds(interval));
-
     }
 
     public long getTicksFromSeconds(int seconds) {
