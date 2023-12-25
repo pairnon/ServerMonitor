@@ -21,6 +21,7 @@ public class Main extends JavaPlugin implements Listener {
         Bukkit.getPluginManager().registerEvents(this, this);
         
         MemoryBar.runRamBar(this);
+        TpsBar.runTpsBar(this);
 
         this.getCommand("toggleram").setExecutor(new CommandToggleRam());
     }
@@ -29,11 +30,13 @@ public class Main extends JavaPlugin implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
 
         BossBar memBar = MemoryBar.memBar;
+        BossBar tpsBar = TpsBar.tpsBar;
 
         Player player = event.getPlayer();
         player.sendMessage(Component.text("Hello, " + event.getPlayer().getName() + "!"));
 
         memBar.addPlayer(player);
+        tpsBar.addPlayer(player);
     }
 
 }
