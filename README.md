@@ -2,4 +2,6 @@
 
 ## Minecraft Java plugin to get and display server stats
 
-*Currently in development*
+Note: Server stats are displayed to all players!
+
+*Developed for 1.20.x*
