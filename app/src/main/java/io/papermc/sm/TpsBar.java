@@ -22,7 +22,14 @@ public class TpsBar {
                 double tps = TpsCalc.tps;
 
                 tpsBar.setTitle("" + tps + "TPS");
-                tpsBar.setProgress(tps / 20);
+
+                // Sometimes tps becomes > 20 after heavy load, 
+                // causing an error when setting bar progress
+                double progress = tps / 20;
+                if (progress > 1.0) {
+                    tpsBar.setProgress(1.0);
+                } else tpsBar.setProgress(progress);
+
                 if( tps <= 15) {
                     tpsBar.setColor(BarColor.RED);
                 }
