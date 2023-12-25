@@ -24,6 +24,7 @@ public class Main extends JavaPlugin implements Listener {
         TpsBar.runTpsBar(this);
 
         this.getCommand("toggleram").setExecutor(new CommandToggleRam());
+        this.getCommand("toggletps").setExecutor(new CommandToggleTps());
     }
 
     @EventHandler
