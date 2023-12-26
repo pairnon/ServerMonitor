@@ -21,7 +21,7 @@ public class TpsBar {
 
                 double tps = TpsCalc.tps;
 
-                tpsBar.setTitle("" + tps + "TPS");
+                tpsBar.setTitle("" + tps + " TPS");
 
                 // Sometimes tps becomes > 20 after heavy load, 
                 // causing an error when setting bar progress
