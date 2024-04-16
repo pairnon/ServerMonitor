@@ -12,18 +12,24 @@ public class MemoryBar {
     public static BossBar memoryBar = null;
 
     public static void run(Plugin plugin) {
-        memoryBar = Bukkit.createBossBar("", BarColor.GREEN, BarStyle.SOLID);
-        memoryBar.setStyle(BarStyle.SEGMENTED_20);
+        initializeMemoryBar();
         new BukkitRunnable() {
             @Override
             public void run() {
+                updateMemoryBar();
+            }
 
+            private void updateMemoryBar() {
                 String memUsed = MemoryCalc.getMemUsed();
                 String memTotal = MemoryCalc.getMemTotal();
                 double percentMemUsed = MemoryCalc.getPercentMemUsed();
                 int percentMemUsedFormatted = (int)(percentMemUsed * 100);
                 memoryBar.setTitle("Server Memory: " + memUsed + " of " + memTotal + " used (" + percentMemUsedFormatted + "%)");
                 memoryBar.setProgress(percentMemUsed);
+                setMemoryBarColor(percentMemUsed);
+            }
+
+            private void setMemoryBarColor(double percentMemUsed) {
                 if(percentMemUsed >= 0.8) {
                     memoryBar.setColor(BarColor.RED);
                 }
@@ -33,9 +39,13 @@ public class MemoryBar {
                 else {
                     memoryBar.setColor(BarColor.GREEN);
                 }
-
             }
         }.runTaskTimer(plugin, 0L, Time.getTicksFromSeconds(Main.intervalInSeconds));
+    }
+
+    private static void initializeMemoryBar() {
+        memoryBar = Bukkit.createBossBar("", BarColor.GREEN, BarStyle.SOLID);
+        memoryBar.setStyle(BarStyle.SEGMENTED_20);
     }
 
 }

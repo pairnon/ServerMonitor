@@ -12,14 +12,16 @@ public class TpsBar {
     public static BossBar tpsBar = null;
 
     public static void run(Plugin plugin) {
-        tpsBar = Bukkit.createBossBar("", BarColor.GREEN, BarStyle.SOLID);
-        tpsBar.setStyle(BarStyle.SEGMENTED_20);
-        TpsCalc.startCalc(plugin);
+        initializeTpsBar();
+        TpsCalculator.startCalculatingTps(plugin);
         new BukkitRunnable() {
             @Override
             public void run() {
+                updateTpsBar();
+            }
 
-                double tps = TpsCalc.tps;
+            private void updateTpsBar() {
+                double tps = TpsCalculator.tps;
 
                 tpsBar.setTitle("" + tps + " TPS");
 
@@ -30,6 +32,10 @@ public class TpsBar {
                     tpsBar.setProgress(1.0);
                 } else tpsBar.setProgress(progress);
 
+                setTpsBarColor(tps);
+            }
+
+            private void setTpsBarColor(double tps) {
                 if( tps <= 15) {
                     tpsBar.setColor(BarColor.RED);
                 }
@@ -39,9 +45,13 @@ public class TpsBar {
                 else {
                     tpsBar.setColor(BarColor.GREEN);
                 }
-
             }
         }.runTaskTimer(plugin, 0L, Time.getTicksFromSeconds(Main.intervalInSeconds));
+    }
+
+    private static void initializeTpsBar() {
+        tpsBar = Bukkit.createBossBar("", BarColor.GREEN, BarStyle.SOLID);
+        tpsBar.setStyle(BarStyle.SEGMENTED_20);
     }
 
 }
