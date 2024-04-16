@@ -41,7 +41,7 @@ public class TpsBar {
                 }
 
             }
-        }.runTaskTimer(plugin, 0L, Helper.getTicksFromSeconds(Main.intervalInSeconds));
+        }.runTaskTimer(plugin, 0L, Time.getTicksFromSeconds(Main.intervalInSeconds));
     }
 
 }
