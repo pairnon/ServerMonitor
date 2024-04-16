@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 
 import io.papermc.sm.TpsBar;
 
+@SuppressWarnings("deprecation")
 public class CommandToggleTps implements CommandExecutor {
     
     @Override

@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 
 import io.papermc.sm.MemoryBar;
 
+@SuppressWarnings("deprecation")
 public class CommandToggleRam implements CommandExecutor {
     
     @Override
