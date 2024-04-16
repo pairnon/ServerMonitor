@@ -6,13 +6,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Calendar;
 
-public class TpsCalc extends JavaPlugin {
+public class TpsCalculator extends JavaPlugin {
    private static int lastSecond = -1;
    private static long tickCount = 0;
 
    public static double tps = 0;
 
-   public static void startCalc(Plugin plugin) {
+   public static void startCalculatingTps(Plugin plugin) {
 
        Bukkit.getScheduler().runTaskTimer(plugin, new Runnable() {
            @Override
