@@ -9,3 +9,5 @@ build
 
 # Ignore runServer output directory
 app/run
+
+app/bin
