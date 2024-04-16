@@ -20,7 +20,7 @@ public class CommandToggleRam implements CommandExecutor {
         if (sender instanceof Player) {
             Player player = (Player)sender;
 
-            BossBar memBar = MemoryBar.memBar;
+            BossBar memBar = MemoryBar.memoryBar;
 
             List<Player> players = memBar.getPlayers();
 

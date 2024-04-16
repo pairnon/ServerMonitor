@@ -28,7 +28,7 @@ public class Main extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
 
-        BossBar memoryBar = MemoryBar.memBar;
+        BossBar memoryBar = MemoryBar.memoryBar;
         BossBar tpsBar = TpsBar.tpsBar;
 
         Player player = event.getPlayer();
