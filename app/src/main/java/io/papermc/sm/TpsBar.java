@@ -11,7 +11,7 @@ public class TpsBar {
     
     public static BossBar tpsBar = null;
 
-    public static void runTpsBar(Plugin plugin) {
+    public static void run(Plugin plugin) {
         tpsBar = Bukkit.createBossBar("", BarColor.GREEN, BarStyle.SOLID);
         tpsBar.setStyle(BarStyle.SEGMENTED_20);
         TpsCalc.startCalc(plugin);
@@ -41,7 +41,7 @@ public class TpsBar {
                 }
 
             }
-        }.runTaskTimer(plugin, 0L, Helper.getTicksFromSeconds(Main.interval));
+        }.runTaskTimer(plugin, 0L, Helper.getTicksFromSeconds(Main.intervalInSeconds));
     }
 
 }

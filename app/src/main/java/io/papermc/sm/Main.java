@@ -13,15 +13,14 @@ import io.papermc.sm.commands.*;
 
 public class Main extends JavaPlugin implements Listener {
 
-    // For status updates, in seconds
-    public static final int interval = 3;
+    public static final int intervalInSeconds = 3;
 
     @Override
     public void onEnable() {
         Bukkit.getPluginManager().registerEvents(this, this);
         
-        MemoryBar.runRamBar(this);
-        TpsBar.runTpsBar(this);
+        MemoryBar.run(this);
+        TpsBar.run(this);
 
         this.getCommand("toggleram").setExecutor(new CommandToggleRam());
         this.getCommand("toggletps").setExecutor(new CommandToggleTps());
@@ -30,13 +29,13 @@ public class Main extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
 
-        BossBar memBar = MemoryBar.memBar;
+        BossBar memoryBar = MemoryBar.memBar;
         BossBar tpsBar = TpsBar.tpsBar;
 
         Player player = event.getPlayer();
         player.sendMessage(Component.text("Hello, " + event.getPlayer().getName() + "!"));
 
-        memBar.addPlayer(player);
+        memoryBar.addPlayer(player);
         tpsBar.addPlayer(player);
     }
 

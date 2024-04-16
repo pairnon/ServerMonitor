@@ -11,7 +11,7 @@ public class MemoryBar {
     
     public static BossBar memBar = null;
 
-    public static void runRamBar(Plugin plugin) {
+    public static void run(Plugin plugin) {
         memBar = Bukkit.createBossBar("", BarColor.GREEN, BarStyle.SOLID);
         memBar.setStyle(BarStyle.SEGMENTED_20);
         new BukkitRunnable() {
@@ -35,7 +35,7 @@ public class MemoryBar {
                 }
 
             }
-        }.runTaskTimer(plugin, 0L, Helper.getTicksFromSeconds(Main.interval));
+        }.runTaskTimer(plugin, 0L, Helper.getTicksFromSeconds(Main.intervalInSeconds));
     }
 
 }
