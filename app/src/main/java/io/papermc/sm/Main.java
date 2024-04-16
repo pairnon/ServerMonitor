@@ -1,6 +1,5 @@
 package io.papermc.sm;
 
-import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Player;
@@ -33,7 +32,6 @@ public class Main extends JavaPlugin implements Listener {
         BossBar tpsBar = TpsBar.tpsBar;
 
         Player player = event.getPlayer();
-        player.sendMessage(Component.text("Hello, " + event.getPlayer().getName() + "!"));
 
         memoryBar.addPlayer(player);
         tpsBar.addPlayer(player);
