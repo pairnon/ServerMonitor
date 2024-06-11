@@ -9,6 +9,8 @@ commands:
   toggleram:
     description: Toggle server memory usage bar
     usage: /toggleram
+    aliases: [tr]
   toggletps:
     description: Toggle server tps bar
     usage: /toggletps
+    aliases: [tt]
