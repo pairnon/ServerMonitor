@@ -1,6 +1,6 @@
 # ServerMonitor
 
-## Minecraft Java plugin to get and display server stats
+Server performance monitoring plugin for Minecraft servers
 
 Note: Server stats are displayed to all players!
 
