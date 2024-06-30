@@ -2,6 +2,7 @@ package io.papermc.sm;
 
 import org.bukkit.Bukkit;
 import org.bukkit.boss.BossBar;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -14,9 +15,17 @@ public class Main extends JavaPlugin implements Listener {
 
     public static final int intervalInSeconds = 3;
 
+    private static boolean showStatsByDefault;
+
+    private FileConfiguration config;
+
     @Override
     public void onEnable() {
         Bukkit.getPluginManager().registerEvents(this, this);
+
+        this.saveDefaultConfig();
+        config = this.getConfig();
+        showStatsByDefault = config.getBoolean("show-stats-by-default");
         
         MemoryBar.run(this);
         TpsBar.run(this);
@@ -27,14 +36,14 @@ public class Main extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
-
-        BossBar memoryBar = MemoryBar.memoryBar;
-        BossBar tpsBar = TpsBar.tpsBar;
-
-        Player player = event.getPlayer();
-
-        memoryBar.addPlayer(player);
-        tpsBar.addPlayer(player);
+        if (showStatsByDefault) {
+            BossBar memoryBar = MemoryBar.memoryBar;
+            BossBar tpsBar = TpsBar.tpsBar;
+    
+            Player player = event.getPlayer();
+    
+            memoryBar.addPlayer(player);
+            tpsBar.addPlayer(player);
+        }
     }
-
 }
