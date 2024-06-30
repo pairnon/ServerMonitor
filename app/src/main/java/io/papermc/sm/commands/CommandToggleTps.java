@@ -16,12 +16,9 @@ public class CommandToggleTps implements CommandExecutor {
     
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        
         if (sender instanceof Player) {
             Player player = (Player)sender;
-
             BossBar tpsBar = TpsBar.tpsBar;
-
             List<Player> players = tpsBar.getPlayers();
 
             for(Player p : players) {
@@ -32,13 +29,10 @@ public class CommandToggleTps implements CommandExecutor {
                     return true;
                 }
             }
-
             tpsBar.addPlayer(player);
             String message = ChatColor.GREEN + "Turned ON TPS bar";
             player.sendMessage(message);
         }
-
         return true;
     }
-
 }

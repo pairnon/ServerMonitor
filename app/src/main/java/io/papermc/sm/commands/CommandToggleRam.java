@@ -16,12 +16,9 @@ public class CommandToggleRam implements CommandExecutor {
     
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        
         if (sender instanceof Player) {
             Player player = (Player)sender;
-
             BossBar memBar = MemoryBar.memoryBar;
-
             List<Player> players = memBar.getPlayers();
 
             for(Player p : players) {
@@ -32,13 +29,10 @@ public class CommandToggleRam implements CommandExecutor {
                     return true;
                 }
             }
-
             memBar.addPlayer(player);
             String message = ChatColor.GREEN + "Turned ON memory usage bar";
             player.sendMessage(message);
         }
-
         return true;
     }
-
 }

@@ -53,5 +53,4 @@ public class TpsBar {
         tpsBar = Bukkit.createBossBar("", BarColor.GREEN, BarStyle.SOLID);
         tpsBar.setStyle(BarStyle.SEGMENTED_20);
     }
-
 }

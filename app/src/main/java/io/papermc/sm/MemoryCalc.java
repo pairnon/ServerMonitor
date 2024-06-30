@@ -27,5 +27,4 @@ public class MemoryCalc {
         long memTotal = Runtime.getRuntime().totalMemory();
         return (double)memUsed / memTotal;
     }
-
 }

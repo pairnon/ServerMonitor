@@ -47,5 +47,4 @@ public class MemoryBar {
         memoryBar = Bukkit.createBossBar("", BarColor.GREEN, BarStyle.SOLID);
         memoryBar.setStyle(BarStyle.SEGMENTED_20);
     }
-
 }
